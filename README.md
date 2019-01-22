@@ -1,6 +1,12 @@
 # CSCI145-HW1
 Java Project One. 2D Dungeon Adventure Game.
 
+## TO DO:
+
+1. Create the "Monster" and "Player" classes.
+2. Create the DungeonGame, DungeonMap, and Room Classes.
+3. Get an A on this project and Profit.
+
 ## Requirements:
 
 1. The dungeon’s rooms must be stored in a 2d array. The default size of a dungeon is 10 x 10. A custom size can be passed in through command line arguments, but a dungeon must be 1 x 1 or larger, so that there is at least one room.
@@ -15,8 +21,9 @@ Java Project One. 2D Dungeon Adventure Game.
 10. The game should end with an appropriate message when a player gets 100 gp or more (win) or the player dies (lose).
 11. The game must include proper error handling, so that the program does not terminate abnormally due to bad user input.
 
-## TO DO:
 
-1. Create the "Monster" and "Player" classes.
-2. Create the DungeonGame, DungeonMap, and Room Classes.
-3. Gen an A and Profit.
+## Dirs and Files
+
+1. ".idea" : All the project specific settings for the Intellij IDE.
+2. "src" : Java project source files.
+3. "HW1.iml" : Module file created by IntelliJ IDEA; stores information about a development module, which may be a Java, Plugin, Android, or Maven component; saves the module paths, dependencies, and other settings.
