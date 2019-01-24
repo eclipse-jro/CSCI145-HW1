@@ -18,16 +18,16 @@ public class Player {
                 health = GameConstants.THIEF_INITAL_HEALTH;
                 damage = GameConstants.THIEF_DAMAGE;
                 entranceText =
-                        "As a drunk thief, you awake after a long night of drinking.\n"
-                        "It is time for the daily usual; stealing and running from the witty to stay afloat."
+                        "As a drunk thief, you awake after a long night of drinking.\n" +
+                        "It is time for the daily usual; stealing and running from the witty to stay afloat.";
                 break;
             case 2:
                 playerType = "Warrior";
                 health = GameConstants.WARRIOR_INITAL_HEALTH;
                 damage = GameConstants.WARRIOR_DAMAGE;
                 entranceText =
-                        "You awake startled. It appears you have lost your battle last night.\n"
-                        "As a warrior your instincts kick in, you sense a dangerous presence and smell GOLD."
+                        "You awake startled. It appears you have lost your battle last night.\n" +
+                        "As a warrior your instincts kick in, you sense a dangerous presence and smell GOLD.";
                 break;
         }
         /* Not sure if switch or below will be better for creating multiple objects of the same class / type.

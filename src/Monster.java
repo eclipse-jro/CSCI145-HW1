@@ -71,5 +71,3 @@ public class Monster {
         return attackDamage;
     }
 }
-
-}
