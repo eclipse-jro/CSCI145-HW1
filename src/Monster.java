@@ -74,8 +74,10 @@ public class Monster {
 
     //damage taken will reduce monster's health
     public void onHit(int damage) {
-        health -= damage;
-        if (health <= 0) {
+    	if(damage >= 0) {
+    		health -= damage;
+    	}
+    	else if (health <= 0) {
         	defeated = true;
         	health = 0;
         }

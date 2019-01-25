@@ -15,7 +15,7 @@ public class Player {
         switch(playerRand){
             case 1:
                 playerType = "Thief";
-                health = GameConstants.THIEF_INITAL_HEALTH;
+                health = GameConstants.THIEF_INITIAL_HEALTH;
                 damage = GameConstants.THIEF_DAMAGE;
                 entranceText =
                         "As a drunk thief, you awake after a long night of drinking.\n" +
@@ -23,7 +23,7 @@ public class Player {
                 break;
             case 2:
                 playerType = "Warrior";
-                health = GameConstants.WARRIOR_INITAL_HEALTH;
+                health = GameConstants.WARRIOR_INIITAL_HEALTH;
                 damage = GameConstants.WARRIOR_DAMAGE;
                 entranceText =
                         "You awake startled. It appears you have lost your battle last night.\n" +
