@@ -3,7 +3,8 @@ Java Project One. 2D Dungeon Adventure Game.
 
 ## TO DO:
 
-1. Create the "Monster" and "Player" classes.
+0. Rene will finish the player class and implement it in main.
+1. Finish the "Monster" and "Player" classes.
 2. Create the DungeonGame, DungeonMap, and Room Classes.
 3. Get an A on this project and Profit.
 
