@@ -74,10 +74,9 @@ public class Monster {
 
     //damage taken will reduce monster's health
     public void onHit(int damage) {
-    	if(damage >= 0) {
-    		health -= damage;
-    	}
-    	else if (health <= 0) {
+        health -= damage;
+
+    	if (health <= 0) {
         	defeated = true;
         	health = 0;
         }
@@ -100,7 +99,7 @@ public class Monster {
     }
     
     public String getEscapeText() {
-    	return escapeText;
+        return escapeText;
     }
     
     public String getDeathText() {
