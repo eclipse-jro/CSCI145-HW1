@@ -6,7 +6,6 @@ public class Monster {
     private String entranceText;
     private String deathText;
     private String escapeText;
-    private String gameOverText;
     private boolean defeated = false;
 
     //constructor: when Monster instance is created, will automatically and randomly choose type
@@ -43,7 +42,7 @@ public class Monster {
                 damage = GameConstants.ORC_MAX_DAMAGE;
                 entranceText =
                         "An orc is patrolling the dungeon.\n" +
-                                "He spots you and with brute force, springs into action!";
+                                "He spots you and charges at his next victim!";
                 escapeText = "The orc lets out a blood curdling roar, as you escape!";
                 deathText = "The orc falls, cracking the stone beneath him.";
                 
@@ -82,14 +81,16 @@ public class Monster {
         }
     }
 
-    //instructions say to include target player in parameters
-    //not sure what this means yet
-    public int attack() {
+    //initiates an attack that directly hits the players health
+    public void attack(Player player) {
         RandomGenerator generator = new RandomGenerator();
         int attackDamage = generator.randInt(1, damage);
-        return attackDamage;
+        System.out.printf("The %s hits you for %d damage", this.getType(), attackDamage);
+        System.out.println();
+        player.onHit(attackDamage);
     }
     
+    //checks if monster is dead
     public boolean isDefeated() {
     	return defeated;
     }
@@ -104,6 +105,10 @@ public class Monster {
     
     public String getDeathText() {
     	return deathText;
+    }
+    
+    public int getDamage() {
+    	return damage;
     }
     
 }

@@ -20,7 +20,7 @@ public class Main {
         //testmonster.runTest();
 
         //room test
-        TestRoom testRoom = new TestRoom();
-        testRoom.runTest(p1);
+        //TestRoom testRoom = new TestRoom();
+        //testRoom.run();
     }
 }
