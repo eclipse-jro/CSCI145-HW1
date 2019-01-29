@@ -5,14 +5,21 @@ public class Player {
     private int damage;
     private String playerType;
     private String entranceText;
+    private boolean defeated = false;
 
     // constructor for easier initialization of Player objects;
-    // random player type method implemented per Jon's example.
-    public Player(int h, int g, int d){
-        RandomGenerator generator = new RandomGenerator();
-        int playerRand = generator.randInt(1,2);
+    // receives player input to choose type
+    public Player(String playerClassChoice){
+        int playerClassNum;
+        //player chooses t for thief or w for warrior
+        if (playerClassChoice.equals("t")) {
+            playerClassNum = 1;
+        }
+        else if(playerClassChoice.equals("w")){
+            playerClassNum =2;
+        } else { playerClassNum = 2; }
 
-        switch(playerRand){
+        switch(playerClassNum){
             case 1:
                 playerType = "Thief";
                 health = GameConstants.THIEF_INITIAL_HEALTH;
@@ -30,14 +37,47 @@ public class Player {
                         "As a warrior your instincts kick in, you sense a dangerous presence and smell GOLD.";
                 break;
         }
-        /* Not sure if switch or below will be better for creating multiple objects of the same class / type.
-        this.health = h;
-        this.gold = g;
-        this.damage = d;
-        */
     }
+
     // getter (accessor method)
     public String getEntranceText() {
         return entranceText;
     }
+
+    //take health away from player
+    public void onHit(int damage){
+        health -= damage;
+        if (health <= 0){
+            defeated = true;
+            health = 0;
+        }
+    }
+
+    //player takes gold
+    public void onLoot (int gold) {
+        this.gold = this.gold + gold;
+    }
+
+    //outputs a boolean
+    public boolean isAlive(){
+        boolean aliveYes = true;
+        if (health == 0){
+            aliveYes = false;
+        }
+        return aliveYes;
+    }
+
+    //uses monsters onhit method to hit monster
+    public void attack(Monster monster){
+    int playerDamage = this.damage;
+    monster.onHit(playerDamage);
+    System.out.println("You hit");
+    }
+
+    //outputs player class
+    public String getType(){ return playerType; }
+
+    //outputs player damage
+    public int getDamage(){ return damage; }
+
 }

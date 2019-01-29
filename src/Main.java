@@ -12,7 +12,15 @@ public class Main {
     	*/
     	
         // player test 1; hp, gp, damage
-        Player p1 = new Player(3, 6, 9);
+        Scanner userInput = new Scanner(System.in);
+        String playerClass = userInput.next();
+        System.out.print("Welcome to the YetToBeNamedDungeonGame.\n");
+        System.out.println("Time to choose your class. You have two choices.\n");
+        System.out.println("Thief or Warrior?\n");
+        System.out.println("Thief: 70HP , 10DMG, 120%GOLD (Enter 't' to select)\n");
+        System.out.println("Warrior: 100HP, 15DMG, 100%GOLD (Enter 'w' to select)\n");
+        System.out.println("Time to choose your class. You have two choices.\n");
+        Player player = new Player(playerClass);
 
 
         //monster test
