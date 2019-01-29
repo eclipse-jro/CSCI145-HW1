@@ -1,9 +1,9 @@
-﻿# CSCI145-HW1
+# CSCI145-HW1
 Java Project One. 2D Dungeon Adventure Game.
 
 ## TO DO:
 
-0. Rene will finish the player class and implement it in main - Classes needed:   A) onHit(damage qty): takes away health from player.    B) onLoot(gold qty): player takes gold.    C) onHeal(heal qty): player gets health.   D) isAlive(): outputs a boolean.   E) attack(): uses monster's onHit method to hit monster.    F) getType(): outputs player class.    G) getDamage(): outputs player damage.  
+0. Rene will finish the player class and implement it in main - Classes needed:   NEW A) getGold(), B) getHealth(), C) lootModifier field (which should get incorporated somehow in gold acquisition)
 1. Finish the "Monster" and "Player" classes.
 2. Create the DungeonGame, DungeonMap, and Room Classes.
 3. Get an A on this project and Profit.
