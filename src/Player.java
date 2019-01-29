@@ -6,6 +6,7 @@ public class Player {
     private String playerType;
     private String entranceText;
     private boolean defeated = false;
+    private int initialHealth;
 
     // constructor for easier initialization of Player objects;
     // receives player input to choose type
@@ -23,6 +24,7 @@ public class Player {
             case 1:
                 playerType = "Thief";
                 health = GameConstants.THIEF_INITIAL_HEALTH;
+                initialHealth = GameConstants.THIEF_INITIAL_HEALTH;
                 damage = GameConstants.THIEF_DAMAGE;
                 entranceText =
                         "As a drunk thief, you awake after a long night of drinking.\n" +
@@ -31,6 +33,7 @@ public class Player {
             case 2:
                 playerType = "Warrior";
                 health = GameConstants.WARRIOR_INIITAL_HEALTH;
+                initialHealth = GameConstants.WARRIOR_INIITAL_HEALTH;
                 damage = GameConstants.WARRIOR_DAMAGE;
                 entranceText =
                         "You awake startled. It appears you have lost your battle last night.\n" +
@@ -51,6 +54,13 @@ public class Player {
             defeated = true;
             health = 0;
         }
+    }
+    
+    public void onHeal(int health) {
+    	this.health += health;
+    	if (this.health > initialHealth) {
+    		this.health = initialHealth;
+    	}
     }
 
     //player takes gold
@@ -79,5 +89,6 @@ public class Player {
 
     //outputs player damage
     public int getDamage(){ return damage; }
+
 
 }
