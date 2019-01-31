@@ -28,7 +28,7 @@ public class Room {
                 System.out.println(loot.getFindText());
                 System.out.println(loot.getTakeText());
                 System.out.println();
-                if(loot.getType() == "gold"){
+                if(loot.getType().equals("gold")){
                     player.onLoot(loot.getQuantity());  
                 }
                 else{

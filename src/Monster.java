@@ -32,7 +32,7 @@ public class Monster {
                 entranceText =
                         "A zombie is painfully rocking back in forth in the corner.\n" +
                                 "He soon senses food and suddenly sprints towards you!";
-                escapeText = "The zombie nashes its teeth as his meal gets away.";
+                escapeText = "The zombie gnashes its teeth as his meal gets away.";
                 deathText = "The zombie is returned to his natural, inanimate state";
                 break;
 

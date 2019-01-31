@@ -9,7 +9,8 @@ public class RandomGenerator {
 
     //get random integer from the inclusive range of a minimum and maximum value
     public int randInt(int min, int max) {
-        int random = (int)((Math.random()*( max-(min-1)) ) + min);
-        return random;
+
+        return (int)((Math.random()*( max-(min-1)) ) + min);
+
     }
 }

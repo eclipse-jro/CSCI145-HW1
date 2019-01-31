@@ -3,13 +3,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
     	
-    	/*//tests Treasure class
+    	//tests Treasure class
     	Treasure treasure = new Treasure();
     	System.out.println(treasure.getFindText());
     	System.out.println(treasure.getTakeText());
     	System.out.println(treasure.getType());
     	System.out.println(treasure.getQuantity());
-    	*/
+
     	
     	
         // player test 1; hp, gp, damage
@@ -27,11 +27,11 @@ public class Main {
 		System.out.println(player.getType());
 
         //monster test
-        //TestMonster testmonster = new TestMonster();
-        //testmonster.runTest();
+        TestMonster testmonster = new TestMonster();
+        testmonster.runTest();
 
         //room test
-        //TestRoom testRoom = new TestRoom();
-        //testRoom.run();
+        TestRoom testRoom = new TestRoom();
+        testRoom.run();
     }
 }
