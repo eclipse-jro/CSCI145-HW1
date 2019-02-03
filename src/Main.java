@@ -12,7 +12,7 @@ public class Main {
 //    	System.out.println(treasure.getQuantity());
 
     	
-    	
+    	/*
         // player test 1; hp, gp, damage
 //        Scanner userInput = new Scanner(System.in);
         
@@ -32,11 +32,12 @@ public class Main {
 //        testmonster.runTest();
 
         //room test
-//        TestRoom testRoom = new TestRoom();
-//        testRoom.run();
+        TestRoom testRoom = new TestRoom();
+        testRoom.run();
+        */
 
-        //dungeonmap test
-        DungeonMapTest testMap = new DungeonMapTest();
-        testMap.runTest();
+    	//test dungeon
+    	TestDungeonGame game = new TestDungeonGame();
+    	game.run();
     }
 }
