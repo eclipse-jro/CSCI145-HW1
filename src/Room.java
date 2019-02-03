@@ -28,7 +28,7 @@ public class Room {
                 System.out.println(loot.getFindText());
                 System.out.println(loot.getTakeText());
                 System.out.println();
-                if(loot.getType().equals("gold")){
+                if(loot.getType().equals("cookies")){
                     player.onLoot(loot.getQuantity());  
                 }
                 else{
@@ -91,7 +91,7 @@ public class Room {
     	}
     	
     	if(player.isAlive() == false) {
-			System.out.println("Death Scenario");
+			System.out.println("You're cookie has crumbled...");
     	}
     	else if(monster.isDefeated()) {
     		System.out.println(monster.getDeathText());

@@ -3,15 +3,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
     	
-    	//tests Treasure class
+    	/*//tests Treasure class
     	Treasure treasure = new Treasure();
     	System.out.println(treasure.getFindText());
     	System.out.println(treasure.getTakeText());
     	System.out.println(treasure.getType());
     	System.out.println(treasure.getQuantity());
-
+*/
     	
-    	
+    	/*
         // player test 1; hp, gp, damage
         Scanner userInput = new Scanner(System.in);
         
@@ -33,5 +33,10 @@ public class Main {
         //room test
         TestRoom testRoom = new TestRoom();
         testRoom.run();
+        */
+
+    	//test dungeon
+    	TestDungeonGame game = new TestDungeonGame();
+    	game.run();
     }
 }

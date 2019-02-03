@@ -11,15 +11,15 @@ public class Treasure {
         int treasureTypeSelection = randomSelect.randInt(1,2);
         switch(treasureTypeSelection) {
             case 1:
-                treasureType = "gold";
+                treasureType = "cookies";
                 effectQuantity = randomSelect.randInt(5, 30);
-                findText = "You found some gold!";
-                takeText = "OBTAINED " + effectQuantity + " GOLD";
+                findText = "You found some cookies!";
+                takeText = "OBTAINED " + effectQuantity + " COOKIES";
                 break;
             case 2:
-                treasureType = "health potion";
+                treasureType = "health soda";
                 effectQuantity = randomSelect.randInt(10, 20);
-                findText = "You found a health potion!";
+                findText = "You found a health soda!";
                 takeText = "RESTORED " + effectQuantity + " HEALTH";
                 break;
         }
