@@ -14,10 +14,10 @@ public class Player {
     public Player(String playerClassChoice){
         int playerClassNum;
         //player chooses t for thief or w for warrior
-        if (playerClassChoice.equals("t")) {
+        if (playerClassChoice.equalsIgnoreCase("t")) {
             playerClassNum = 1;
         }
-        else if(playerClassChoice.equals("w")){
+        else if(playerClassChoice.equalsIgnoreCase("w")){
             playerClassNum =2;
         } else { playerClassNum = 2; }
 
