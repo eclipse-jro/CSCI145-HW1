@@ -7,6 +7,7 @@ public class Player {
     private String entranceText;
     private boolean defeated = false;
     private int initialHealth;
+    private Point2d position;
 
     // constructor for easier initialization of Player objects;
     // receives player input to choose type
@@ -40,6 +41,14 @@ public class Player {
                         "As a warrior your instincts kick in, you sense a dangerous presence and smell GOLD.";
                 break;
         }
+    }
+
+    public Point2d getPosition(){
+        return position;
+    }
+
+    public void setPosition(Point2d point){
+        this.position = point;
     }
 
     // getter (accessor method)
@@ -90,5 +99,8 @@ public class Player {
     //outputs player damage
     public int getDamage(){ return damage; }
 
+    public int getHealth(){ return health; }
+
+    public int getGold(){ return gold; }
 
 }
