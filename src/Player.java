@@ -103,4 +103,8 @@ public class Player {
 
     public int getGold(){ return gold; }
 
+    public int getMaxHealth(){
+        return initialHealth;
+    }
+
 }
