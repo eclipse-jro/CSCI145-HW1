@@ -7,6 +7,12 @@ public class DungeonMap {
 
     // constructor ; custom parameter
     public DungeonMap(int rows, int columns, Player player){
+        if (rows == 0 && columns == 0 ||
+            (rows < 0 || columns < 0)
+        ){
+            rows = 10;
+            columns = 10;
+        }
         room = new Room[rows][columns];
         this.player = player;
         initializeMap();
@@ -41,9 +47,12 @@ public class DungeonMap {
     }
 
     private void printUpperLowerWall(){
-        for(int r = 0; r < room[r].length - 1; r++){
-            System.out.print(WALL_MAP_POSITION);
+        System.out.print("+-");
+        for(int r = 0; r < room[r].length -1; r++){
+            //System.out.print(WALL_MAP_POSITION);
+            System.out.print("-");
         }
+        System.out.print("+");
         System.out.println();
     }
 

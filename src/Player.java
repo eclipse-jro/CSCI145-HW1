@@ -28,8 +28,8 @@ public class Player {
                 initialHealth = GameConstants.THIEF_INITIAL_HEALTH;
                 damage = GameConstants.THIEF_DAMAGE;
                 entranceText =
-                        "As a drunk thief, you awake after a long night of drinking.\n" +
-                        "It is time for the daily usual; stealing and running from the witty to stay afloat.";
+                        "You awake startled. As a drunk thief, you awake after a long night of drinking.\n" +
+                        "It is time for the daily usual, scavenging cookies, stealing, and use of wit to stay afloat.";
                 break;
             case 2:
                 playerType = "Warrior";
@@ -37,8 +37,8 @@ public class Player {
                 initialHealth = GameConstants.WARRIOR_INIITAL_HEALTH;
                 damage = GameConstants.WARRIOR_DAMAGE;
                 entranceText =
-                        "You awake startled. It appears you have lost your battle last night.\n" +
-                        "As a warrior your instincts kick in, you sense a dangerous presence and smell GOLD.";
+                        "You awake startled. It appears you have lost your battle with the Cookie Monster last night.\n" +
+                        "Your senses pick something up; there is a dangerous presence and you can smell COOKIES?!";
                 break;
         }
     }

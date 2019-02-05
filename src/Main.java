@@ -3,7 +3,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-    	
+
+        // kicks off game, intro text, receive class choice from user
+    	TestDungeonGame game = new TestDungeonGame();
+    	game.run();
+
     	//tests Treasure class
 //    	Treasure treasure = new Treasure();
 //    	System.out.println(treasure.getFindText());
@@ -12,32 +16,21 @@ public class Main {
 //    	System.out.println(treasure.getQuantity());
 
     	
-    	/*
+
         // player test 1; hp, gp, damage
 //        Scanner userInput = new Scanner(System.in);
-        
-//        System.out.print("Welcome to the YetToBeNamedDungeonGame.\n");
-//        System.out.println("Time to choose your class. You have two choices.\n");
-//        System.out.println("Thief or Warrior?\n");
-//        System.out.println("Thief: 70HP , 10DMG, 120%GOLD (Enter 't' to select)\n");
-//        System.out.println("Warrior: 100HP, 15DMG, 100%GOLD (Enter 'w' to select)\n");
-//        System.out.println("Time to choose your class. You have two choices.\n");
+
 //        String playerClass = userInput.next();
-//        Player player = new Player(playerClass);
-        
-//		System.out.println(player.getType());
+//        Player playerTest = new Player(playerClass);
+
+//		System.out.println(playerTest.getType());
 
         //monster test
 //        TestMonster testmonster = new TestMonster();
 //        testmonster.runTest();
 
         //room test
-        TestRoom testRoom = new TestRoom();
-        testRoom.run();
-        */
-
-    	//test dungeon
-    	TestDungeonGame game = new TestDungeonGame();
-    	game.run();
+//        TestRoom testRoom = new TestRoom();
+//        testRoom.run();
     }
 }
