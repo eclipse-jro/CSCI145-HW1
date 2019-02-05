@@ -29,12 +29,7 @@ public class DungeonGame {
 
         while(player.isAlive() //&& player.getGold < 100
         ){
-            printDivide();
-            map.Print();
-            System.out.print("GP =" + player.getGold() + "\n");
-            System.out.print("HP =" + player.getHealth() + "\n");
-            System.out.print("\n");
-            printDivide();
+            printDisplay(map, player);
             // break is here temporarily for testing
             break;
 
@@ -71,5 +66,14 @@ public class DungeonGame {
     public void printDivide(){
         System.out.println("-----------------------------------------------------------------------------------------");
         System.out.println("-----------------------------------------------------------------------------------------" + "\n");
+    }
+
+    public void printDisplay(DungeonMap displayMap, Player displayPlayer){
+        printDivide();
+        displayMap.Print();
+        System.out.print("GP =" + displayPlayer.getGold() + "\n");
+        System.out.print("HP =" + displayPlayer.getHealth() + "\n");
+        System.out.print("\n");
+        printDivide();
     }
 }
