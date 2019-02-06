@@ -63,4 +63,8 @@ public class DungeonMap {
             }
         }
     }
+
+    public Room[][] getRooms(){
+        return room;
+    }
 }

@@ -35,4 +35,20 @@ public class Point2d {
 
         return distance;
     }
+
+    public void moveUp(){
+        x -= 1;
+    }
+
+    public void moveDown(){
+        x += 1;
+    }
+
+    public void moveLeft(){
+        y -= 1;
+    }
+
+    public void moveRight(){
+        y += 1;
+    }
 }

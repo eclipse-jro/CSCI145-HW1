@@ -57,7 +57,7 @@ public class Monster {
                                 "He is gluttonously eating a stash of cookies...\n" +
                                 "and he DOESN'T WANT TO SHARE!";
                 escapeText = "You run away, and the man quickly returns to his indulging.";
-                deathText = "The man explodes and cookies and cream cover the walls.";
+                deathText = "The man explodes...cookie dough cover the walls.";
                 break;
         }
     }

@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) {
 
         // kicks off game, intro text, receive class choice from user
-    	TestDungeonGame game = new TestDungeonGame();
-    	game.run();
+    	DungeonGame game = new DungeonGame();
+    	game.play();
 
     	//tests Treasure class
 //    	Treasure treasure = new Treasure();
@@ -30,7 +30,7 @@ public class Main {
 //        testmonster.runTest();
 
         //room test
-//        TestRoom testRoom = new TestRoom();
-//        testRoom.run();
+        //TestRoom testRoom = new TestRoom();
+        //testRoom.run();
     }
 }

@@ -14,16 +14,33 @@ public class Treasure {
                 treasureType = "cookies";
                 effectQuantity = randomSelect.randInt(5, 30);
                 findText = "You found some cookies!";
-                takeText = "OBTAINED " + effectQuantity + " COOKIES";
+                takeText = "OBTAINED %d COOKIES";
                 break;
             case 2:
                 treasureType = "health soda";
                 effectQuantity = randomSelect.randInt(10, 20);
                 findText = "You found a health soda!";
-                takeText = "RESTORED " + effectQuantity + " HEALTH";
+                takeText = "RESTORED %d HEALTH";
                 break;
         }
+    }
 
+    public Treasure(int choice){
+        RandomGenerator randomSelect = new RandomGenerator();
+        switch(choice){
+            case 1:
+                treasureType = "cookies";
+                effectQuantity = randomSelect.randInt(5, 30);
+                findText = "You found some cookies!";
+                takeText = "OBTAINED %d COOKIES";
+                break;
+            case 2:
+                treasureType = "health soda";
+                effectQuantity = randomSelect.randInt(10, 20);
+                findText = "You found a health soda!";
+                takeText = "RESTORED %d HEALTH";
+                break;
+        }
     }
 
     public String getType() {

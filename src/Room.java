@@ -20,26 +20,42 @@ public class Room {
         }
     }
 
+    public Room(int monsterOrLoot, int choice){
+        switch(monsterOrLoot){
+            case 1:
+                loot = new Treasure(choice);
+                break;
+            case 2:
+                monster = new Monster();
+                break;
+        }
+    }
+
     //procedure when entering rooms
     public void enter(Player player, Scanner input){
         if(visited == false) {
             visited = true;
             if(monster == null){
                 System.out.println(loot.getFindText());
-                System.out.println(loot.getTakeText());
                 System.out.println();
+
                 if(loot.getType().equals("cookies")){
-                    player.onLoot(loot.getQuantity());  
+                    System.out.printf(loot.getTakeText(), (int)(loot.getQuantity() * player.getLootModifier()));
+                    player.onLoot((int)(loot.getQuantity() * player.getLootModifier()));
                 }
                 else{
+                    System.out.printf(loot.getTakeText(), loot.getQuantity());
                     player.onHeal(loot.getQuantity());  
                 }
+                System.out.println();
+
             }
             else{
                 System.out.println(monster.getEntranceText());
                 System.out.println();
                 battle(player, monster, input);
             }
+
         }
         else{
         	System.out.println("You have already visited this room...");
@@ -78,7 +94,9 @@ public class Room {
     			}
     		}
     		else if(choice.equalsIgnoreCase("r")) {
+                System.out.println();
     			monster.attack(player);
+
     			if(player.isAlive()) {
     				System.out.println(monster.getEscapeText());
     				System.out.println();
@@ -87,6 +105,7 @@ public class Room {
     		}
     		else {
     			System.out.println("Please enter either A or R.");
+                System.out.println();
     		}  
     	}
     	

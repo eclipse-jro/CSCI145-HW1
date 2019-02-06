@@ -1,48 +1,86 @@
 import java.util.Scanner;
 
 public class DungeonGame {
-    //private DungeonMap map;
+    private DungeonMap map;
+    private Player player;
+    private Scanner input;
 
-    public void play(){
-        Player player;
-        int dungeonSize;
+    public DungeonGame(){
+        int dungeonSize = 0;
         String classChoice;
+        input = new Scanner(System.in);
+        String stringEntry = "";
+        boolean breakLoop = false;
 
         printIntro();
-        System.out.println("Choose dungeon size 1 or greater. (Enter '0' for default size 10 rows x 10 columns)." + "\n");
-        System.out.println("Enter number of rows and columns: ");
-        Scanner inputDungeonsize = new Scanner(System.in);
-        dungeonSize = inputDungeonsize.nextInt();
 
-        System.out.println("Thief: 70HP , 10DMG, 120%GOLD (Enter 't' to select)");
-        System.out.println("Warrior: 100HP, 15DMG, 100%GOLD (Enter 'w' to select)");
-        System.out.print("Choose your class, Warrior or Thief? (W/T): ");
-        Scanner inputClass = new Scanner(System.in);
-        classChoice = inputClass.next();
-        player = new Player(classChoice);
-        // testing dungeonMap
-        DungeonMap map = new DungeonMap(dungeonSize, dungeonSize, player);
+        while(!breakLoop) {
+            System.out.println("Choose dungeon size 1 or greater. (Enter '0' for default size 10 rows x 10 columns).");
+            System.out.println();
+            System.out.print("Enter number of rows and columns: ");
+
+            stringEntry = input.nextLine();
+
+            try {
+                dungeonSize = Integer.parseInt(stringEntry);
+                breakLoop = true;
+                System.out.println();
+            }
+            catch(NumberFormatException e){
+                System.out.println("ERROR: Please enter an integer.");
+                System.out.println();
+                continue;
+            }
+        }
+
+        breakLoop = false;
+
+        while(!breakLoop) {
+            System.out.println("Thief: 70 hp, 10 dmg, +120% Cookies");
+            System.out.println("Warrior: 100 hp, 15 dmg, +100% Cookies");
+            System.out.print("Choose your class, Warrior or Thief? (W/T): ");
+
+            classChoice = input.nextLine();
+            if(classChoice.equalsIgnoreCase("w") || classChoice.equalsIgnoreCase("t")){
+                player = new Player(classChoice);
+                breakLoop = true;
+            }
+            else{
+                System.out.println();
+                System.out.println("Please enter W or T.");
+                System.out.println();
+            }
+
+        }
+
+        map = new DungeonMap(dungeonSize, dungeonSize, player);
         Point2d xyPlayer = new Point2d(0,0);
         player.setPosition(xyPlayer);
+    }
+
+
+
+    public void play(){
 
         System.out.println("\n" + player.getEntranceText());
 
-        while(player.isAlive() //&& player.getGold < 100
-        ){
+        while(player.isAlive() && player.getGold() < 100
+        ) {
             printDisplay(map, player);
-            // break is here temporarily for testing
-            break;
 
+            map.getRooms()[player.getPosition().getX()][player.getPosition().getY()].enter(player, input);
+
+            navigate();
         }
+
         if(player.isAlive()){
             System.out.println("You acquired 100 cookies! YOU WIN!");
         }
         else{
             System.out.println("GAME OVER!");
         }
-
-
     }
+
 
     private void printIntro(){
         System.out.println(" ________________________________________________________________________________");
@@ -64,16 +102,88 @@ public class DungeonGame {
     }
 
     public void printDivide(){
-        System.out.println("-----------------------------------------------------------------------------------------");
-        System.out.println("-----------------------------------------------------------------------------------------" + "\n");
+        System.out.println("---------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------------------------" + "\n");
     }
 
     public void printDisplay(DungeonMap displayMap, Player displayPlayer){
         printDivide();
         displayMap.Print();
-        System.out.print("GP =" + displayPlayer.getGold() + "\n");
-        System.out.print("HP =" + displayPlayer.getHealth() + "\n");
+
+        System.out.print("COOKIES: " + displayPlayer.getGold() + "\n");
+        System.out.print("HP: " + displayPlayer.getHealth() + "\n");
         System.out.print("\n");
-        printDivide();
+    }
+
+    public void navigate() {
+        String choice;
+        boolean loopActive = true;
+
+        while (loopActive) {
+            System.out.print("What room would you like to go to? [W]Up, [S]Down, [A]Left, [D]Right:");
+            choice = input.nextLine();
+            choice = choice.toUpperCase();
+
+            switch(choice){
+                case "W":
+                    if(player.getPosition().getX() == 0){
+                        System.out.println();
+                        System.out.println("You cannot move through walls!");
+                        System.out.println();
+
+                        continue;
+                    }
+                    else{
+                        player.getPosition().moveUp();
+                    }
+                    loopActive = false;
+                    break;
+
+                case "S":
+                    if(player.getPosition().getX() == map.getRooms().length - 1){
+                        System.out.println();
+                        System.out.println("You cannot move through walls!");
+                        System.out.println();
+                        continue;
+                    }
+                    else{
+                        player.getPosition().moveDown();
+                    }
+                    loopActive = false;
+                    break;
+
+                case "A":
+                    if(player.getPosition().getY() == 0){
+                        System.out.println();
+                        System.out.println("You cannot move through walls!");
+                        System.out.println();
+                        continue;
+                    }
+                    else{
+                        player.getPosition().moveLeft();
+                    }
+                    loopActive = false;
+                    break;
+
+                case "D":
+                    if(player.getPosition().getY() == map.getRooms()[0].length - 1){
+                        System.out.println();
+                        System.out.println("You cannot move through walls!");
+                        System.out.println();
+                        continue;
+                    }
+                    else{
+                        player.getPosition().moveRight();
+                    }
+                    loopActive = false;
+                    break;
+
+                default:
+                    System.out.println();
+                    System.out.println("Please enter W,S,A, or D only.");
+                    System.out.println();
+                    break;
+            }
+        }
     }
 }
