@@ -93,7 +93,7 @@ public class Player {
     public void attack(Monster monster){
     int playerDamage = this.damage;
     monster.onHit(playerDamage);
-    System.out.println("You hit");
+
     }
 
     //outputs player class

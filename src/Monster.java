@@ -53,7 +53,7 @@ public class Monster {
                 health = GameConstants.DENEKE_INITIAL_HEALTH;
                 damage = GameConstants.DENEKE_MAX_DAMAGE;
                 entranceText =
-                        "A man is standing still in the middle of the room.\n" +
+                        "A Deneke is standing still in the middle of the room.\n" +
                                 "He is gluttonously eating a stash of cookies...\n" +
                                 "and he DOESN'T WANT TO SHARE!";
                 escapeText = "You run away, and the man quickly returns to his indulging.";

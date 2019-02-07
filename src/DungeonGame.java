@@ -6,52 +6,15 @@ public class DungeonGame {
     private Scanner input;
 
     public DungeonGame(){
-        int dungeonSize = 0;
         String classChoice;
+        int dungeonSize;
         input = new Scanner(System.in);
-        String stringEntry = "";
-        boolean breakLoop = false;
 
         printIntro();
 
-        while(!breakLoop) {
-            System.out.println("Choose dungeon size 1 or greater. (Enter '0' for default size 10 rows x 10 columns).");
-            System.out.println();
-            System.out.print("Enter number of rows and columns: ");
+        dungeonSize = constructMap();
 
-            stringEntry = input.nextLine();
-
-            try {
-                dungeonSize = Integer.parseInt(stringEntry);
-                breakLoop = true;
-                System.out.println();
-            }
-            catch(NumberFormatException e){
-                System.out.println("ERROR: Please enter an integer.");
-                System.out.println();
-                continue;
-            }
-        }
-
-        breakLoop = false;
-
-        while(!breakLoop) {
-            System.out.println("Thief: 70 hp, 10 dmg, +120% Cookies");
-            System.out.println("Warrior: 100 hp, 15 dmg, +100% Cookies");
-            System.out.print("Choose your class, Warrior or Thief? (W/T): ");
-
-            classChoice = input.nextLine();
-            if(classChoice.equalsIgnoreCase("w") || classChoice.equalsIgnoreCase("t")){
-                player = new Player(classChoice);
-                breakLoop = true;
-            }
-            else{
-                System.out.println();
-                System.out.println("Please enter W or T.");
-                System.out.println();
-            }
-
-        }
+        setPlayer();
 
         map = new DungeonMap(dungeonSize, dungeonSize, player);
         Point2d xyPlayer = new Point2d(0,0);
@@ -64,17 +27,29 @@ public class DungeonGame {
 
         System.out.println("\n" + player.getEntranceText());
 
-        while(player.isAlive() && player.getGold() < 100
-        ) {
-            printDisplay(map, player);
+        while(player.isAlive() && player.getGold() < 100  && !completedAllRooms()){
 
+            printDivide();
             map.getRooms()[player.getPosition().getX()][player.getPosition().getY()].enter(player, input);
 
+            printDisplay();
+            map.getRooms()[player.getPosition().getX()][player.getPosition().getY()].initiateCombat(player, input);
+
+            if(map.getRooms().length == 1 || !player.isAlive() || (player.getGold() >= 100)){
+                break;
+            }
+
             navigate();
+
         }
 
-        if(player.isAlive()){
+        if(player.getGold() >= 100){
             System.out.println("You acquired 100 cookies! YOU WIN!");
+        }
+        else if(player.isAlive()){
+            System.out.println();
+            System.out.println("There are no more rooms. You did not get 100 cookies.");
+            System.out.println("GAME OVER");
         }
         else{
             System.out.println("GAME OVER!");
@@ -106,12 +81,11 @@ public class DungeonGame {
         System.out.println("---------------------------------------------------------------------------------------------------" + "\n");
     }
 
-    public void printDisplay(DungeonMap displayMap, Player displayPlayer){
-        printDivide();
-        displayMap.Print();
+    public void printDisplay(){
+        map.Print();
 
-        System.out.print("COOKIES: " + displayPlayer.getGold() + "\n");
-        System.out.print("HP: " + displayPlayer.getHealth() + "\n");
+        System.out.print("COOKIES: " + player.getGold() + "\n");
+        System.out.print("HP: " + player.getHealth() + "\n");
         System.out.print("\n");
     }
 
@@ -185,5 +159,70 @@ public class DungeonGame {
                     break;
             }
         }
+    }
+
+    private int constructMap(){
+        boolean breakLoop = false;
+        String stringEntry;
+        int dungeonSize = 10;
+
+        while(!breakLoop) {
+            System.out.println("Choose dungeon size 1 or greater. (Enter '0' for default size 10 rows x 10 columns).");
+            System.out.println();
+            System.out.print("Enter number of rows and columns: ");
+
+            stringEntry = input.nextLine();
+
+            try {
+                dungeonSize = Integer.parseInt(stringEntry);
+                breakLoop = true;
+                System.out.println();
+            } catch (NumberFormatException e) {
+                System.out.println("ERROR: Please enter an integer.");
+                System.out.println();
+                continue;
+            }
+        }
+        return dungeonSize;
+    }
+
+
+    private void setPlayer(){
+        boolean breakLoop = false;
+        String classChoice;
+
+        while(!breakLoop) {
+            System.out.println("Thief: 70 hp, 10 dmg, +120% Cookies");
+            System.out.println("Warrior: 100 hp, 15 dmg, +100% Cookies");
+            System.out.print("Choose your class, Warrior or Thief? (W/T): ");
+
+            classChoice = input.nextLine();
+            if(classChoice.equalsIgnoreCase("w") || classChoice.equalsIgnoreCase("t")){
+                player = new Player(classChoice);
+                breakLoop = true;
+            }
+            else{
+                System.out.println();
+                System.out.println("Please enter W or T.");
+                System.out.println();
+            }
+
+        }
+    }
+
+    private boolean completedAllRooms(){
+        for(int x = 0; x < map.getRooms().length; x++){
+            for(int y = 0; y < map.getRooms()[0].length; y++){
+                if(map.getRooms()[x][y].hasVisited() == false) {
+                    return false;
+                }
+                else if(map.getRooms()[x][y].hasMonster()){
+                    if(!map.getRooms()[x][y].isMonsterDefeated()){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 }

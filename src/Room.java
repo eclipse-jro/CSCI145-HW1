@@ -34,10 +34,8 @@ public class Room {
     //procedure when entering rooms
     public void enter(Player player, Scanner input){
         if(visited == false) {
-            visited = true;
             if(monster == null){
                 System.out.println(loot.getFindText());
-                System.out.println();
 
                 if(loot.getType().equals("cookies")){
                     System.out.printf(loot.getTakeText(), (int)(loot.getQuantity() * player.getLootModifier()));
@@ -45,27 +43,13 @@ public class Room {
                 }
                 else{
                     System.out.printf(loot.getTakeText(), loot.getQuantity());
-                    player.onHeal(loot.getQuantity());  
+                    player.onHeal(loot.getQuantity());
                 }
                 System.out.println();
-
             }
-            else{
-                System.out.println(monster.getEntranceText());
-                System.out.println();
-                battle(player, monster, input);
-            }
-
         }
         else{
         	System.out.println("You have already visited this room...");
-        	if(monster != null) {
-        		if(!monster.isDefeated()){
-                System.out.println("It appears the " + monster.getType() + " has been waiting for you!");
-                battle(player, monster, input);
-                //attack sequence continues here
-        		}
-            }
         }
 
 
@@ -110,10 +94,13 @@ public class Room {
     	}
     	
     	if(player.isAlive() == false) {
+    	    System.out.println();
 			System.out.println("You're cookie has crumbled...");
     	}
     	else if(monster.isDefeated()) {
+    	    System.out.println();
     		System.out.println(monster.getDeathText());
+            System.out.println();
     	}
     }
 
@@ -121,5 +108,36 @@ public class Room {
         return visited;
     }
 
+    public boolean hasMonster(){
+        if (monster == null){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 
+    public boolean isMonsterDefeated(){
+        if (monster.isDefeated()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void initiateCombat(Player player, Scanner input) {
+        if (hasMonster()) {
+            if (hasVisited() && !isMonsterDefeated()) {
+                System.out.println("It appears the " + monster.getType() + " has been waiting for you!");
+                System.out.println();
+                battle(player, monster, input);
+            } else {
+                System.out.println(monster.getEntranceText());
+                System.out.println();
+                battle(player, monster, input);
+            }
+        }
+        visited = true;
+    }
 }
