@@ -9,16 +9,17 @@ public class Treasure {
     public Treasure() {
         RandomGenerator randomSelect = new RandomGenerator();
         int treasureTypeSelection = randomSelect.randInt(1,2);
+
         switch(treasureTypeSelection) {
             case 1:
                 treasureType = "cookies";
-                effectQuantity = randomSelect.randInt(5, 30);
+                effectQuantity = randomSelect.randInt(12, 21);
                 findText = "You found some cookies!";
                 takeText = "OBTAINED %d COOKIES";
                 break;
             case 2:
                 treasureType = "health soda";
-                effectQuantity = randomSelect.randInt(10, 20);
+                effectQuantity = randomSelect.randInt(12, 21);
                 findText = "You found a health soda!";
                 takeText = "RESTORED %d HEALTH";
                 break;

@@ -7,10 +7,10 @@ public class DungeonMap {
     private final String VISTED_MARKER = "* ";
 
     // constructor ; custom parameter
-    public DungeonMap(int rows, int columns, Player player){
+    public DungeonMap(int rows, int columns, Player player) {
         if (rows == 0 && columns == 0 ||
-            (rows < 0 || columns < 0)
-        ){
+                (rows < 0 || columns < 0)
+                ) {
             rows = 10;
             columns = 10;
         }
@@ -20,27 +20,25 @@ public class DungeonMap {
     }
 
     // constructor ; 10x10
-    public DungeonMap(){
+    public DungeonMap() {
         room = new Room[10][10];
         initializeMap();
     }
 
-    public void Print(){
+    public void Print() {
         printUpperLowerWall();
 
-        for (int r = 0; r < room.length; r++){
+        for (int r = 0; r < room.length; r++) {
             System.out.print(WALL_MAP_POSITION);
 
-            for (int c = 0; c < room[r].length; c++){
+            for (int c = 0; c < room[r].length; c++) {
                 if (r == player.getPosition().getX() &&
-                    c == player.getPosition().getY()
-                ){
+                        c == player.getPosition().getY()
+                        ) {
                     System.out.print(PLAYER_MAP_POSITION);
-                }
-                else if(room[r][c].hasVisited()){
+                } else if (room[r][c].hasVisited()) {
                     System.out.print(VISTED_MARKER);
-                }
-                else {
+                } else {
                     System.out.print(EMPTY_MAP_POSITION);
                 }
             }
@@ -51,9 +49,9 @@ public class DungeonMap {
         printUpperLowerWall();
     }
 
-    private void printUpperLowerWall(){
+    private void printUpperLowerWall() {
         System.out.print("+-");
-        for(int r = 0; r < room[r].length -1; r++){
+        for (int r = 0; r < room[r].length - 1; r++) {
             //System.out.print(WALL_MAP_POSITION);
             System.out.print("--");
         }
@@ -61,15 +59,19 @@ public class DungeonMap {
         System.out.println();
     }
 
-    public void initializeMap(){
-        for (int r = 0; r < room.length; r++){
-            for (int c = 0; c < room[r].length; c++){
+    public void initializeMap() {
+        for (int r = 0; r < room.length; r++) {
+            for (int c = 0; c < room[r].length; c++) {
                 room[r][c] = new Room();
             }
         }
     }
 
-    public Room[][] getRooms(){
+    public Room[][] getRooms() {
         return room;
+    }
+
+    public int getDungeonSize() {
+        return room[0].length;
     }
 }
