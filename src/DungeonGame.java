@@ -114,7 +114,7 @@ public class DungeonGame {
                     break;
 
                 case "S":
-                    if(player.getPosition().getX() == map.getRooms().length - 1){
+                    if(player.getPosition().getX() == map.getRooms().length -1){
                         System.out.println();
                         System.out.println("You cannot move through walls!");
                         System.out.println();

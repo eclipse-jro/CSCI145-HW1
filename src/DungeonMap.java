@@ -3,8 +3,8 @@ public class DungeonMap {
     private Player player;
     private final char WALL_MAP_POSITION = '|';
     private final String EMPTY_MAP_POSITION = "  ";
-    private final String PLAYER_MAP_POSITION = "P ";
     private final String VISTED_MARKER = "* ";
+    private String player_map_position = "P ";
 
     // constructor ; custom parameter
     public DungeonMap(int rows, int columns, Player player){
@@ -17,6 +17,13 @@ public class DungeonMap {
         room = new Room[rows][columns];
         this.player = player;
         initializeMap();
+
+        // get player map position class symbol to display position
+        if(player.getType() == "Thief"){
+            player_map_position = "T ";
+        } else if (player.getType() == "Warrior"){
+            player_map_position = "W ";
+        }
     }
 
     // constructor ; 10x10
@@ -35,7 +42,7 @@ public class DungeonMap {
                 if (r == player.getPosition().getX() &&
                     c == player.getPosition().getY()
                 ){
-                    System.out.print(PLAYER_MAP_POSITION);
+                    System.out.print(player_map_position);
                 }
                 else if(room[r][c].hasVisited()){
                     System.out.print(VISTED_MARKER);
