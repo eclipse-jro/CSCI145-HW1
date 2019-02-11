@@ -1,18 +1,17 @@
-//I can' run this; error = "class file has wrong version 54.0, should be 52.0"
-
 public class Treasure {
     private String treasureType;
     private int effectQuantity;
     private String findText;
     private String takeText;
+    public int treasureMult;
 
-    public Treasure() {
+    public Treasure() { // 1 treasure needs sizes passed to it
         RandomGenerator randomSelect = new RandomGenerator();
         int treasureTypeSelection = randomSelect.randInt(1,2);
-
         switch(treasureTypeSelection) {
             case 1:
                 treasureType = "cookies";
+
                 effectQuantity = randomSelect.randInt(12, 21);
                 findText = "You found some cookies!";
                 takeText = "OBTAINED %d COOKIES";
@@ -58,5 +57,11 @@ public class Treasure {
 
     public String getTakeText() {
         return takeText;
+    }
+
+    public int getTreasureMult() { return treasureMult; }
+
+    public void setTreasureMult(int mult){
+        this.treasureMult = mult;
     }
 }

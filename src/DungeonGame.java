@@ -5,6 +5,7 @@ public class DungeonGame {
     private Player player;
     private Scanner input;
 
+
     public DungeonGame(){
         String classChoice;
         int dungeonSize;
@@ -14,9 +15,10 @@ public class DungeonGame {
 
         dungeonSize = constructMap();
 
-        setPlayer();
+        setPlayer(dungeonSize);
 
         map = new DungeonMap(dungeonSize, dungeonSize, player);
+
         Point2d xyPlayer = new Point2d(0,0);
         player.setPosition(xyPlayer);
     }
@@ -187,7 +189,7 @@ public class DungeonGame {
     }
 
 
-    private void setPlayer(){
+    private void setPlayer(int mapSize){
         boolean breakLoop = false;
         String classChoice;
 
@@ -198,7 +200,7 @@ public class DungeonGame {
 
             classChoice = input.nextLine();
             if(classChoice.equalsIgnoreCase("w") || classChoice.equalsIgnoreCase("t")){
-                player = new Player(classChoice);
+                player = new Player(classChoice, mapSize);
                 breakLoop = true;
             }
             else{
@@ -225,4 +227,5 @@ public class DungeonGame {
         }
         return true;
     }
+
 }

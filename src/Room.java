@@ -6,7 +6,7 @@ public class Room {
     private Treasure loot;
 
     //constructor: randomly creates a monster or loot object
-    public Room(){
+    public Room(){ // 3 pass size into room
         RandomGenerator randGen = new RandomGenerator();
 
         int monsterOrLoot = randGen.randInt(1,2);
@@ -15,7 +15,7 @@ public class Room {
                 monster = new Monster();
                 break;
             case 2:
-                loot = new Treasure();
+                loot = new Treasure(); // 2 pass mult into treasure constructor
                 break;
         }
     }

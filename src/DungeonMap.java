@@ -6,6 +6,7 @@ public class DungeonMap {
     private final String VISTED_MARKER = "* ";
     private String player_map_position = "P ";
 
+
     // constructor ; custom parameter
     public DungeonMap(int rows, int columns, Player player) {
         if (rows == 0 && columns == 0 ||
@@ -14,7 +15,7 @@ public class DungeonMap {
             rows = 10;
             columns = 10;
         }
-        room = new Room[rows][columns];
+        room = new Room[rows][columns]; // 4 pass size into room
         this.player = player;
         initializeMap();
 
@@ -24,6 +25,7 @@ public class DungeonMap {
         } else if (player.getType() == "Warrior"){
             player_map_position = "W ";
         }
+
     }
 
     // constructor ; 10x10
@@ -77,9 +79,5 @@ public class DungeonMap {
 
     public Room[][] getRooms() {
         return room;
-    }
-
-    public int getDungeonSize() {
-        return room[0].length;
     }
 }
