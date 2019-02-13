@@ -1,7 +1,9 @@
-/*  For use in producing random values,
-    such as: random monster type, gold amounts,
-    damage amounts, etc.
-    Might end up being moved into a different class as a method. */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// AUTHOR   | Jon Garber && Jose Rene Ortega Jr.
+// DATE     | February 12th, 2019
+// PROJECT  | CSCI145 Homework One
+// FILE     | For use in producing random values, such as: random monster type, gold amounts, damage amounts, etc.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 import java.lang.Math;
 

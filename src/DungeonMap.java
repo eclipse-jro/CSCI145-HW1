@@ -1,3 +1,10 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// AUTHOR   | Jon Garber && Jose Rene Ortega Jr.
+// DATE     | February 12th, 2019
+// PROJECT  | CSCI145 Homework One
+// FILE     | DungeonMap.java prints out Room 2d array map, player position,  and rooms visited / not visited.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 public class DungeonMap {
     private Room[][] room;
     private Player player;
@@ -7,22 +14,20 @@ public class DungeonMap {
     private String player_map_position = "P ";
 
 
-    // constructor ; custom parameter
+    // constructor, creates input sized 2D array and initializes player.
     public DungeonMap(int rows, int columns, Player player) {
-        if (rows == 0 && columns == 0 ||
-                (rows < 0 || columns < 0)
-                ) {
+        if ( rows == 0 && columns == 0 || (rows < 0 || columns < 0) ) {
             rows = 10;
             columns = 10;
         }
-        room = new Room[rows][columns]; // 4 pass size into room
+        room = new Room[rows][columns];
         this.player = player;
         initializeMap();
 
         // get player map position class symbol to display position
-        if(player.getType() == "Thief"){
+        if(player.getType() == "Thief") {
             player_map_position = "T ";
-        } else if (player.getType() == "Warrior"){
+        } else if (player.getType() == "Warrior") {
             player_map_position = "W ";
         }
 
@@ -32,8 +37,15 @@ public class DungeonMap {
     public DungeonMap() {
         room = new Room[10][10];
         initializeMap();
+
+        if(player.getType() == "Thief") {
+            player_map_position = "T ";
+        } else if (player.getType() == "Warrior") {
+            player_map_position = "W ";
+        }
     }
 
+    // displays the non-boundaries  section of the map to user.
     public void Print() {
         printUpperLowerWall();
 
@@ -46,7 +58,7 @@ public class DungeonMap {
                 ){
                     System.out.print(player_map_position);
                 }
-                else if(room[r][c].hasVisited()){
+                else if(room[r][c].hasVisited()) {
                     System.out.print(VISTED_MARKER);
                 } else {
                     System.out.print(EMPTY_MAP_POSITION);
@@ -59,6 +71,7 @@ public class DungeonMap {
         printUpperLowerWall();
     }
 
+    //prints boundaries section of the map to the user.
     private void printUpperLowerWall() {
         System.out.print("+-");
         for (int r = 0; r < room[r].length - 1; r++) {
@@ -69,6 +82,7 @@ public class DungeonMap {
         System.out.println();
     }
 
+    //initializes the map 2d array
     public void initializeMap() {
         for (int r = 0; r < room.length; r++) {
             for (int c = 0; c < room[r].length; c++) {
@@ -77,6 +91,7 @@ public class DungeonMap {
         }
     }
 
+    //accessor method
     public Room[][] getRooms() {
         return room;
     }

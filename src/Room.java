@@ -1,6 +1,10 @@
-//Room.java makes a room that will contain either treasure or a monster,
-//and will have procedures for player entry, battle, looting, and memory of
-//player visitation.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// AUTHOR   | Jon Garber && Jose Rene Ortega Jr.
+// DATE     | February 12th, 2019
+// PROJECT  | CSCI145 Homework One
+// FILE     | Room.java makes a room that will contain either treasure or a monster, and will
+//          | have procedures for player entry, battle, looting, and memory of player visitation.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 import java.util.Scanner;
 
