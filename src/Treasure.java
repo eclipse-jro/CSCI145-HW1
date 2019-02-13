@@ -1,47 +1,64 @@
+//Treasure.java controls the loot behavior and attributes.
+
 public class Treasure {
     private String treasureType;
     private int effectQuantity;
     private String findText;
     private String takeText;
-    public int treasureMult;
+    private String killFindText;
 
-    public Treasure() { // 1 treasure needs sizes passed to it
+    //default constructor
+    public Treasure() {
+        //randomly chooses between cookies or health soda
+        RandomGenerator randomSelect = new RandomGenerator();
+        int treasureTypeSelection = randomSelect.randInt(1,2);
+
+        //depending on random selection, instantiates fields with appropriate info
+        switch(treasureTypeSelection) {
+            case 1:
+                treasureType = "cookies";
+                //selects random amount of cookies
+                effectQuantity = randomSelect.randInt(10, 20);
+                findText = "You found some cookies!";
+                takeText = "OBTAINED %d COOKIES";
+                killFindText = "You found cookies among the monster's remains.";
+                break;
+            case 2:
+                treasureType = "health soda";
+                //selects random amount of healing
+                effectQuantity = randomSelect.randInt(10, 20);
+                findText = "You found a health soda!";
+                takeText = "RESTORED %d HEALTH";
+                killFindText = "You found a health soda among the monster's remains.";
+                break;
+        }
+    }
+
+    //constructer that dictates what the maximum value the random generator can produce
+    public Treasure(int max){
         RandomGenerator randomSelect = new RandomGenerator();
         int treasureTypeSelection = randomSelect.randInt(1,2);
         switch(treasureTypeSelection) {
             case 1:
                 treasureType = "cookies";
-
-                effectQuantity = randomSelect.randInt(12, 21);
+                //randomly produces cookie quantity between the MAX argument and half of that
+                effectQuantity = randomSelect.randInt((int)(max/2), max);
                 findText = "You found some cookies!";
                 takeText = "OBTAINED %d COOKIES";
+                killFindText = "You found cookies among the monster's remains.";
                 break;
             case 2:
                 treasureType = "health soda";
-                effectQuantity = randomSelect.randInt(12, 21);
+                //randomly produces healing quantity between the MAX argument and half of that
+                effectQuantity = randomSelect.randInt((int)(max/2), max);
                 findText = "You found a health soda!";
                 takeText = "RESTORED %d HEALTH";
+                killFindText = "You found a health soda among the monster's remains.";
                 break;
         }
     }
 
-    public Treasure(int choice){
-        RandomGenerator randomSelect = new RandomGenerator();
-        switch(choice){
-            case 1:
-                treasureType = "cookies";
-                effectQuantity = randomSelect.randInt(5, 30);
-                findText = "You found some cookies!";
-                takeText = "OBTAINED %d COOKIES";
-                break;
-            case 2:
-                treasureType = "health soda";
-                effectQuantity = randomSelect.randInt(10, 20);
-                findText = "You found a health soda!";
-                takeText = "RESTORED %d HEALTH";
-                break;
-        }
-    }
+    //public getters
 
     public String getType() {
         return treasureType;
@@ -59,9 +76,8 @@ public class Treasure {
         return takeText;
     }
 
-    public int getTreasureMult() { return treasureMult; }
-
-    public void setTreasureMult(int mult){
-        this.treasureMult = mult;
+    public String getKillFindText() {
+        return killFindText;
     }
+
 }

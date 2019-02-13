@@ -6,12 +6,12 @@ public class TestMonster {
         int damage;
 
         //creates an monster object and prints out entrance text
-        Monster testMonster = new Monster();
-        Player testPlayer = new Player("t");
+        //Monster testMonster = new Monster();
+        //Player testPlayer = new Player("t");
         
         
-        testMonster.attack(testPlayer);
-        testPlayer.attack(testMonster);
+        //testMonster.attack(testPlayer);
+        //testPlayer.attack(testMonster);
         
         
     }

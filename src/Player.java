@@ -23,11 +23,11 @@ public class Player {
             playerClassNum =2;
         } else { playerClassNum = 2; }
 
-        if(mapSize >= 0 && mapSize <= 2){
-            mapSizeLootMult = 4.50;
-        } else if(mapSize >= 3 && mapSize <= 5){
+        if(mapSize > 0 && mapSize <= 2){
+            mapSizeLootMult = 5.00;
+        } else if(mapSize <= 5){
             mapSizeLootMult = 1.70;
-        } else if(mapSize >= 5 && mapSize <= 9){
+        } else if(mapSize <= 9){
             mapSizeLootMult = 1.10;
         }else {
             mapSizeLootMult = 1.00;
@@ -39,7 +39,7 @@ public class Player {
                 health = GameConstants.THIEF_INITIAL_HEALTH;
                 initialHealth = GameConstants.THIEF_INITIAL_HEALTH;
                 damage = GameConstants.THIEF_DAMAGE;
-                lootModifier = GameConstants.THIEF_GOLD_MULTIPLIER + mapSizeLootMult;
+                lootModifier = GameConstants.THIEF_GOLD_MULTIPLIER * mapSizeLootMult;
                 entranceText =
                         "You awake startled. As a drunk thief, you awake after a long night of drinking.\n" +
                         "It is time for the daily usual, scavenging cookies, stealing, and use of wit to stay afloat.";
@@ -49,7 +49,7 @@ public class Player {
                 health = GameConstants.WARRIOR_INIITAL_HEALTH;
                 initialHealth = GameConstants.WARRIOR_INIITAL_HEALTH;
                 damage = GameConstants.WARRIOR_DAMAGE;
-                lootModifier = GameConstants.WARRIOR_GOLD_MULTIPLIER + mapSizeLootMult;
+                lootModifier = GameConstants.WARRIOR_GOLD_MULTIPLIER * mapSizeLootMult;
                 entranceText =
                         "You awake startled. It appears you have lost your battle with the Cookie Monster last night.\n" +
                         "Your senses pick something up; there is a dangerous presence and you can smell COOKIES?!";
