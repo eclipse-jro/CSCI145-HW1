@@ -77,7 +77,8 @@ public class Room {
     			if(player.isAlive()) {
         			player.attack(monster);
         			System.out.printf("The %s hits the %s for %d damage! %n", player.getType(), monster.getType(), player.getDamage());
-        			System.out.println();
+                    System.out.print("\n" + "HP: " + player.getHealth() + "\n");
+                    System.out.println();
     			}
     		}
     		//escape/run sequence
