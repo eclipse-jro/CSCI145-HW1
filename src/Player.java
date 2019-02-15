@@ -2,7 +2,7 @@
 // AUTHOR   | Jon Garber && Jose Rene Ortega Jr.
 // DATE     | February 12th, 2019
 // PROJECT  | CSCI145 Homework One
-// FILE     | Player.java is the player character; traits incude class type, gold, health, damage,
+// FILE     | Player.java is the player character; traits include class type, gold, health, damage,
 //          | position, and modifiers to influence gold multiplier by both map and class size.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

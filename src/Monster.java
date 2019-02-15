@@ -2,7 +2,8 @@
 // AUTHOR   | Jon Garber && Jose Rene Ortega Jr.
 // DATE     | February 12th, 2019
 // PROJECT  | CSCI145 Homework One
-// FILE     | Monster.java [description]
+// FILE     | Monster.java creates a template for a monster. Will randomly generate a monster type, and
+//          | can attack the player and take damage.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public class Monster {

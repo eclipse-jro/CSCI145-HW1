@@ -2,7 +2,8 @@
 // AUTHOR   | Jon Garber && Jose Rene Ortega Jr.
 // DATE     | February 12th, 2019
 // PROJECT  | CSCI145 Homework One
-// FILE     | Point2d.java [description]
+// FILE     | Point2d.java creates an object that describes the players location on the map.
+//          | This can be updated to shift the player up, down, left or right on the map, or return a coordinate.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public class Point2d {
