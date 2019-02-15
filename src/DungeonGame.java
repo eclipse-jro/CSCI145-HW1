@@ -30,6 +30,22 @@ public class DungeonGame {
         player.setPosition(xyPlayer);
     }
 
+    //over loaded constructor to handle command line argument for dungeon size
+    //initiates intro and constructs the player and map
+    public DungeonGame(int dungeonSize){
+        input = new Scanner(System.in);
+
+        //intro text
+        printIntro();
+
+        //constructs player objects
+        setPlayer(dungeonSize);
+
+        map = new DungeonMap(dungeonSize, dungeonSize, player);
+        Point2d xyPlayer = new Point2d(0,0);
+        player.setPosition(xyPlayer);
+    }
+
     // initiates gameplay
     public void play(){
 

@@ -15,6 +15,7 @@ public class DungeonMap {
 
 
     // constructor, creates input sized 2D array and initializes player.
+    // default size 10
     public DungeonMap(int rows, int columns, Player player) {
         if ( rows == 0 && columns == 0 || (rows < 0 || columns < 0) ) {
             rows = 10;
@@ -31,18 +32,6 @@ public class DungeonMap {
             player_map_position = "W ";
         }
 
-    }
-
-    // constructor ; 10x10
-    public DungeonMap() {
-        room = new Room[10][10];
-        initializeMap();
-
-        if(player.getType() == "Thief") {
-            player_map_position = "T ";
-        } else if (player.getType() == "Warrior") {
-            player_map_position = "W ";
-        }
     }
 
     // displays the non-boundaries  section of the map to user.

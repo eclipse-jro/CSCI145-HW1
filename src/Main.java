@@ -8,7 +8,15 @@
 public class Main {
     public static void main(String[] args) {
 
-        DungeonGame game = new DungeonGame();
-        game.play();
+        //option to set dungeon size through the command line.
+        if (args.length > 0) {
+            int dungeonSize = Integer.parseInt(args[0]);
+            DungeonGame game = new DungeonGame(dungeonSize);
+            game.play();
+        }
+        else {
+            DungeonGame game = new DungeonGame();
+            game.play();
+        }
     }
 }
