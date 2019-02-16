@@ -12,10 +12,17 @@ public class Room {
     private boolean visited = false;
     private Monster monster;
     private Treasure loot;
+    private static int numberOfRooms;
 
     //constructor: randomly creates a Monster or Treasure object
     public Room(){
         RandomGenerator randGen = new RandomGenerator();
+        if(numberOfRooms == 0) {
+            numberOfRooms = 1;
+        }
+        else{
+            numberOfRooms += 1;
+        }
 
         int monsterOrLoot = randGen.randInt(1,2);
         switch(monsterOrLoot) {
@@ -65,7 +72,7 @@ public class Room {
     	while(player.isAlive() && !monster.isDefeated()) {
 
     	    //prompts user to run or fight
-    		System.out.println("What you you like to do?");
+    		System.out.println("What would you like to do?");
     		System.out.print("(A)ttack or (R)un?: ");
     		choice = input.nextLine();
 
@@ -84,6 +91,13 @@ public class Room {
     		//escape/run sequence
     		else if(choice.equalsIgnoreCase("r")) {
                 System.out.println();
+
+                if(numberOfRooms == 1){
+                    System.out.println("There is only one room in this dungeon.");
+                    System.out.println("There's nowhere to run...");
+                    System.out.println("");
+                    continue;
+                }
                 //monster attacks player first
     			monster.attack(player);
 
